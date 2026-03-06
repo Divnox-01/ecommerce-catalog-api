@@ -12,6 +12,12 @@ connectDB();
 
 app.use("/products", productRoutes);
 
-app.listen(3000, () => {
-  console.log("Server running on port 3000");
-});
+// export the app for Vercel
+module.exports = app;
+
+// run locally only
+if (process.env.NODE_ENV !== "production") {
+  app.listen(3000, () => {
+    console.log("Server running on port 3000");
+  });
+}
