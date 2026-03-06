@@ -10,12 +10,16 @@ app.use(express.json());
 
 connectDB();
 
+// root route
+app.get("/", (req, res) => {
+  res.send("E-commerce Catalog API is running 🚀");
+});
+
+// product routes
 app.use("/products", productRoutes);
 
-// PORT for Render / production
 const PORT = process.env.PORT || 3000;
 
-// start server
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on port ${PORT}`);
 });
